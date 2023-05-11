@@ -6,13 +6,64 @@
     {}
   ],
   "session": [
-    {
-
-    }
+    {}
   ],
   "users": [
     {
-
+      "fullname": "Manoj",
+      "email": "manojadhikari@gmail.com",
+      "mobile": "234324234",
+      "password": "asdasdf",
+      "confirmPassword": "asdasdf",
+      "id": 1
+    },
+    {
+      "fullname": "shivam",
+      "email": "shivamadhikari@gmail.com",
+      "mobile": "32432",
+      "password": "asdf",
+      "confirmPassword": "asdf",
+      "id": 2
+    },
+    {
+      "fullname": "1231231",
+      "email": "alooo@mail.com",
+      "password": "123123",
+      "confirmPassword": "123123",
+      "mobile": "31231231231231",
+      "id": 3
+    },
+    {
+      "fullname": "luka",
+      "email": "2fa@mail.com",
+      "password": "123123",
+      "confirmPassword": "123123",
+      "mobile": "5555555555",
+      "id": 4
+    },
+    {
+      "fullname": "gioo",
+      "email": "admin@mail.com",
+      "password": "123123",
+      "confirmPassword": "123123",
+      "mobile": "123123123",
+      "id": 5
+    },
+    {
+      "fullname": "dpvsnjiodspnv",
+      "email": "luka@mail.com",
+      "password": "123123",
+      "confirmPassword": "123123",
+      "mobile": "povndfospivd",
+      "id": 6
+    },
+    {
+      "fullname": "axali",
+      "email": "axali@mail.com",
+      "password": "asdf",
+      "confirmPassword": "asdf",
+      "mobile": "123123123",
+      "id": 7
     }
   ]
 }
