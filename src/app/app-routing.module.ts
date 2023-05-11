@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {path: 'dashboard', component: DashboardComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: '', redirectTo: 'login', pathMatch: "full"}
+  {path: '', redirectTo: '/auth/login', pathMatch: "full"}
 ];
 
 @NgModule({
