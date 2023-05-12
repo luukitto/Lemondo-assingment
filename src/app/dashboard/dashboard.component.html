@@ -7,8 +7,13 @@
             <button (click)="logout()" type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">log out</button>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <button routerLink="/profile" type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">profile</button>
+            <button (click)="profile(2)" type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">profile</button>
         </div>
+
+        <form>
+            <input [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" type="text"
+                   placeholder="ძიება">
+        </form>
     </div>
     <div class="mt-8 flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -24,7 +29,7 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-200" *ngFor="let user of userDash">
+                    <tbody class="divide-y divide-gray-200" *ngFor="let user of userDash | filter:searchText:  'email'">
                     <tr>
                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{user.fullname}}</td>
                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{user.email}}</td>

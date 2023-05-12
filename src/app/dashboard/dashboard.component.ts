@@ -9,6 +9,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  public searchText = ''
   constructor(
       private userService: UserService,
       private router: Router,
@@ -24,8 +25,13 @@ export class DashboardComponent implements OnInit {
         })
   }
 
+  profile(userId: number):void {
+    this.router.navigate(['/profile',userId])
+  }
+
   logout() {
     this.userService.logout();
+    localStorage.clear()
     this.router.navigate(['/auth/login'])
   }
 }

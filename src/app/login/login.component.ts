@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit{
   public loginForm !: FormGroup
   public loggedInUser: any
   public loggedInUsername: any
+  public currentUser: any
 
   constructor(
       private http: HttpClient,
@@ -22,27 +23,28 @@ export class LoginComponent implements OnInit{
   }
 
   ngOnInit() {
-    localStorage.setItem('SessionUser', this.userInfo)
     this.loginForm = new FormGroup({
       'email': new FormControl(),
       'password': new FormControl()
     })
-    this.userService.getUserInfo(this.loggedInUsername)
-        .subscribe((data: any) => {
-            if(data.length > 0) {
-                this.loggedInUser = data[0]
-                console.log(data, 'dataaaaa')
-            }
-        })
+
   }
+
+
   userInfo: any
   logindata(formValue: any) {
-      console.log(this.loginForm.value, 'valuee')
+    const userId = 1
+    const user = this.loginForm.value
+    console.log(this.loginForm.value, 'valuee')
     this.userService.logIn(formValue)
         .subscribe(res => {
           this.userInfo = res
           let user = res.find((a:any) => {
-            return a.email === this.loginForm.value.email && a.password == this.loginForm.value.password
+              sessionStorage.setItem('SessionStorage', JSON.stringify(this.loginForm.value))
+              localStorage.setItem('userId', userId.toString());
+              var data = sessionStorage.getItem('id')
+              console.log(data, '8888888')
+              return a.email === this.loginForm.value.email && a.password == this.loginForm.value.password
           });
 
           if(user) {
@@ -56,5 +58,6 @@ export class LoginComponent implements OnInit{
         }, error => {
           alert('something wrong')
         })
+
   }
 }

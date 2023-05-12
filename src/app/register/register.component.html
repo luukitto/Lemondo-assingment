@@ -5,7 +5,7 @@
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form [formGroup]="registerForm" (ngSubmit)="signup(registerForm.value)" class="space-y-6" action="#" method="POST">
+        <form [formGroup]="registerForm" (ngSubmit)="signup(registerForm.value); checkEmail()" class="space-y-6" action="#" method="POST">
             <div>
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                 <div class="mt-2">
@@ -30,6 +30,9 @@
                     <input formControlName="confirmPassword" id="confirmPassword" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
+            <div *ngIf="registerForm.errors?.['passwordsNotMatch']">
+                Passwords do not match.
+            </div>
             <div>
                 <div class="flex items-center justify-between">
                     <label for="fullname" class="block text-sm font-medium leading-6 text-gray-900">nickname</label>
@@ -44,13 +47,22 @@
                     <label for="phoneNumber" class="block text-sm font-medium leading-6 text-gray-900">phoneNumber</label>
                 </div>
                 <div class="mt-2">
-                    <input formControlName="mobile" id="phoneNumber" name="tel" type="tel" value="" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input formControlName="mobile" id="phoneNumber" placeholder="+995 555 555 555" name="tel" type="number" value="+995" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
 
+<!--            <div class="formkit-outer items-center justify-between" data-family="text" data-type="tel" data-complete="true">-->
+<!--                <div class="formkit-wrapper">-->
+<!--                    <label class="formkit-label block text-sm font-medium leading-6 text-gray-900" for="input_0">Phone number</label>-->
+<!--                    <div class="formkit-inner">-->
+<!--                        <input placeholder="+995-555-555-555" type="ph" class="formkit-input block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" type="tel" name="tel_1" id="input_0">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
 
             <div>
-                <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+                <button type="submit" [disabled]="registerForm.invalid" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
             </div>
         </form>
 

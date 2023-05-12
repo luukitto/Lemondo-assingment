@@ -5,18 +5,28 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {AuthGuardService} from "./shared/auth.service";
 
 const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
+    // canActivate: [AuthGuardService],
     children: [
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent}
     ]
   },
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'profile', component: ProfileComponent},
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      {path: '', component: DashboardComponent},
+      {path: ':id', component: ProfileComponent}
+    ]
+  },
+
+  {path: 'profile/:id', component: ProfileComponent},
   {path: '', redirectTo: '/auth/login', pathMatch: "full"}
 ];
 

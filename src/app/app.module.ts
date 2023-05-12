@@ -8,8 +8,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {AuthGuardService} from "./shared/auth.service";
+import {UserFilterPipe} from "./dashboard/userFilter.pipe";
+
 
 @NgModule({
   declarations: [
@@ -18,15 +21,17 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserFilterPipe
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
